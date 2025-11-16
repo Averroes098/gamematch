@@ -180,7 +180,3 @@ Silakan fork dan ajukan perubahan.
 ## 📄 License
 
 MIT License — bebas digunakan dan dikembangkan.
-
-```
-
-
