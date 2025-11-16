@@ -65,27 +65,29 @@ GameMatch adalah aplikasi rekomendasi laptop berbasis web yang membantu pengguna
 
 ┌────────────────────┐
 │     User / Client  │
+│ (Browser / Frontend)│
 └─────────┬──────────┘
-│ HTTP Request
-▼
+          │  HTTP Request (Search Game / Laptop)
+          ▼
 ┌────────────────────┐
 │   GameMatch API    │
 │ (Flask + Gunicorn) │
 └─────────┬──────────┘
-│
-├──► Local CSV / JSON Database
-│
-├──► External API (Steam API)
-│
-▼
+          │
+          ├────────────► Local CSV / JSON Database
+          │
+          ├────────────► External API (Steam API / Laptop API)
+          │
+          ▼
 ┌───────────────────────┐
 │     Response Builder   │
 └─────────┬─────────────┘
-│ JSON Response
-▼
+          │   JSON Response
+          ▼
 ┌───────────────────────┐
-│    Frontend Render     │
-└────────────────────────┘
+│    Frontend Render    │
+└───────────────────────┘
+
 
 ````
 
