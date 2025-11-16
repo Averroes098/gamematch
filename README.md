@@ -86,6 +86,42 @@ GameMatch dibangun dengan teknologi modern:
 └── README.md
 ```
 
+## 🔄 GameMatch System Workflow
+```
+┌────────────────────┐
+│     User / Client  │
+│  (Browser/Frontend) │
+└─────────┬──────────┘
+          │  HTTP Request (Search Game/Laptop)
+          ▼
+┌────────────────────┐
+│   GameMatch API    │
+│ (Flask + Gunicorn) │
+└─────────┬──────────┘
+          │
+          ├────────────► Local JSON Database
+          │                ├ games.json
+          │                └ laptops.json
+          │       (Filter, Matching Spec, Ranking)
+          │
+          ├────────────► External APIs (optional)
+          │                ├ Steam API (Game data)
+          │                └ TechSpecs API (Laptop data)
+          │
+          ▼
+┌────────────────────┐
+│  Response Builder  │
+│ (JSON Output API   │
+│  Recommended List) │
+└─────────┬──────────┘
+          │  HTTP Response (JSON)
+          ▼
+┌────────────────────┐
+│   Frontend Render  │
+│ (HTML/JS/React/etc)│
+└────────────────────┘
+```
+
 ---
 
 ## 🚀 Cara Install & Menjalankan
@@ -160,6 +196,10 @@ Pull Request selalu diterima jika saya lagi gabut aja.
 
 ---
 
-## 📄 License
+## Link Website
+https://gamematch.up.railway.app/
 
+---
+
+## 📄 License
 MIT License – Bebas digunakan dan dikembangkan.
