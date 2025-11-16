@@ -59,7 +59,7 @@ GameMatch dibangun dengan teknologi modern:
 | Backend  | Laravel 10                           |
 | Frontend | Blade / Bootstrap / AdminLTE         |
 | Database | MySQL                                |
-| API      | GameSpec API / Laptop API (opsional) |
+| API      | GameSpec API /                       |
 
 ---
 
