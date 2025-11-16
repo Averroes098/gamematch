@@ -167,7 +167,6 @@ Aplikasi biasanya berjalan di:
 ## 🤝 Kontribusi
 
 Pull Request diterima **kalau lagi gabut** 😄
-Silakan fork dan ajukan perubahan.
 
 <img src="https://github.com/user-attachments/assets/eb63af8f-7207-404d-85fa-3ed471ff9e1b" width="300">
 
