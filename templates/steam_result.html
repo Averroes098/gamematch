@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Hasil Pencarian Steam</h2>
+
+{% if current_laptop %}
+<div class="alert alert-info">
+  <strong>Laptop:</strong> {{ current_laptop.name }} ({{ current_laptop.ram }}GB RAM)
+</div>
+{% endif %}
+
+<div class="list-group mt-4">
+  {% for game in results %}<div class="list-group-item d-flex justify-content-between align-items-center">
+    <div><strong>{{ game.name }}</strong><br><small class="text-muted">AppID: {{ game.appid }}</small></div>
+    <div>
+      <a href="/steam-details/{{ game.appid }}" class="btn btn-sm btn-primary">Detail</a>
+      <a href="/compare/{{ game.appid }}" class="btn btn-sm btn-info">Bandingkan</a>
+    </div>
+  </div>{% endfor %}
+</div>
+
+<a class="btn btn-secondary mt-4" href="/">Kembali ke Dashboard</a>
+{% endblock %}

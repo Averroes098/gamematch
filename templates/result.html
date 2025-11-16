@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>📊 Spesifikasi Laptop Anda: {{ laptop.name }}</h2>
+
+<div class="card mt-4 border-primary">
+    <div class="card-body">
+        <h5 class="card-title">Detail Spesifikasi</h5>
+        <p><strong>💻 CPU:</strong> {{ laptop.cpu }}</p>
+        <p><strong>🎮 GPU:</strong> {{ laptop.gpu }}</p>
+        <p><strong>🧠 RAM:</strong> {{ laptop.ram }} GB</p>
+        {% if laptop.storage %}<p><strong>💾 Storage:</strong> {{ laptop.storage }} GB</p>{% endif %}
+    </div>
+</div>
+
+<div class="alert alert-info mt-4">
+    <h5>🔍 Langkah Berikutnya: Cari Game di Steam</h5>
+    <p>Klik tombol di bawah untuk mencari game yang sesuai dengan spesifikasi laptop Anda di Steam, kemudian bandingkan
+        requirement game dengan specs laptop.</p>
+    <a href="/steam-search" class="btn btn-primary btn-lg">🎯 Cari Game di Steam</a>
+</div>
+
+<a class="btn btn-secondary mt-4" href="/">Kembali ke Dashboard</a>
+{% endblock %}

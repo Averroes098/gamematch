@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+  <div class="col-md-8">
+    <h2>{{ game.name }}</h2>
+
+    {% if game.header_image %}<img src="{{ game.header_image }}" class="img-fluid mt-3" alt="{{ game.name }}"
+      style="max-width: 100%; border-radius: 8px;">{% endif %}
+
+    {% if game.short_description %}<p class="mt-4">{{ game.short_description }}</p>{% endif %}
+
+    {% if game.genres %}<p><strong>🎮 Genre:</strong> {% for g in game.genres %}{{ g.description }}{% if not loop.last
+      %}, {% endif %}{% endfor %}</p>{% endif %}
+
+    {% if game.price_overview %}<p><strong>💰 Harga:</strong> {{ game.price_overview.final_formatted }}</p>{% endif %}
+
+    {% if game.platforms %}<p><strong>🖥️ Platform:</strong> {% if game.platforms.windows %}Windows {% endif %}{% if
+      game.platforms.linux %}Linux {% endif %}{% if game.platforms.mac %}Mac {% endif %}</p>{% endif %}
+  </div>
+
+  {% if laptop %}
+  <div class="col-md-4">
+    <div class="card border-info">
+      <div class="card-header bg-info text-white">
+        <h5>📊 Perbandingan Spesifikasi</h5>
+      </div>
+      <div class="card-body">
+        <h6 class="mb-3">Laptop Anda: <strong>{{ laptop.name }}</strong></h6>
+        <div class="table-responsive">
+          <table class="table table-sm">
+            <tr>
+              <td><strong>💻 CPU:</strong></td>
+              <td>{{ laptop.cpu }}</td>
+            </tr>
+            <tr>
+              <td><strong>🎮 GPU:</strong></td>
+              <td>{{ laptop.gpu }}</td>
+            </tr>
+            <tr>
+              <td><strong>🧠 RAM:</strong></td>
+              <td>{{ laptop.ram }} GB</td>
+            </tr>
+            {% if laptop.storage %}
+            <tr>
+              <td><strong>💾 Storage:</strong></td>
+              <td>{{ laptop.storage }} GB</td>
+            </tr>
+            {% endif %}
+          </table>
+        </div>
+
+        <hr>
+
+        <h6 class="mb-3">Requirements Game</h6>
+        {% if game.pc_requirements %}
+        <div class="alert alert-light p-2">
+          <small><strong>Minimum:</strong><br>{{ game.pc_requirements.minimum|safe }}</small>
+        </div>
+        <div class="alert alert-light p-2">
+          <small><strong>Recommended:</strong><br>{{ game.pc_requirements.recommended|safe }}</small>
+        </div>
+        {% else %}
+        <p><em class="text-muted">Informasi requirement tidak tersedia</em></p>
+        {% endif %}
+
+        <a href="/compare/{{ game.steamappid }}" class="btn btn-primary btn-sm w-100 mt-3">📋 Analisis Lengkap</a>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</div>
+
+<div class="mt-4">
+  <a class="btn btn-secondary" href="/steam-search">Kembali ke Pencarian</a>
+  <a class="btn btn-secondary" href="/">Kembali ke Dashboard</a>
+</div>
+{% endblock %}

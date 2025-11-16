@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>📊 Analisis Kompatibilitas</h2>
+
+{% if compatibility %}
+<div class="row mt-4 mb-4">
+    <div class="col-md-12">
+        {% if compatibility.overall == "excellent" %}
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">✅ LANCAR - OPTIMAL!</h4>
+            <p>{{ compatibility.message }}</p>
+        </div>
+        {% elif compatibility.overall == "playable" %}
+        <div class="alert alert-info" role="alert">
+            <h4 class="alert-heading">⚠️ BISA DIMAINKAN</h4>
+            <p>{{ compatibility.message }}</p>
+        </div>
+        {% else %}
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">❌ TIDAK LANCAR</h4>
+            <p>{{ compatibility.message }}</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endif %}
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <h4>💻 Spesifikasi Laptop Anda</h4>
+        <div class="card">
+            <div class="card-body">
+                <p><strong>Nama:</strong> {{ laptop.name }}</p>
+                <p><strong>CPU:</strong> {{ laptop.cpu }}</p>
+                <p><strong>GPU:</strong> {{ laptop.gpu }}</p>
+                <p><strong>RAM:</strong> {{ laptop.ram }} GB</p>
+                {% if laptop.storage %}<p><strong>Storage:</strong> {{ laptop.storage }} GB</p>{% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <h4>🎮 Persyaratan Game: {{ game.name }}</h4>
+        <div class="card">
+            <div class="card-body">
+                {% if game.short_description %}<p><small><strong>Deskripsi:</strong> {{ game.short_description
+                        }}</small></p>{% endif %}
+
+                <h6 class="mt-3">Minimum Requirements:</h6>
+                {% if compatibility.minimum %}
+                <div class="alert alert-light p-2 mb-2">
+                    <strong>Status:</strong> {{ compatibility.minimum }}
+                </div>
+                {% endif %}
+                {% if game.pc_requirements %}
+                <div class="bg-light p-2 mb-3 border-start border-2">
+                    {{ game.pc_requirements.minimum|safe }}
+                </div>
+                {% endif %}
+
+                <h6>Recommended Requirements:</h6>
+                {% if compatibility.recommended %}
+                <div class="alert alert-light p-2 mb-2">
+                    <strong>Status:</strong> {{ compatibility.recommended }}
+                </div>
+                {% endif %}
+                {% if game.pc_requirements %}
+                <div class="bg-light p-2 border-start border-2">
+                    {{ game.pc_requirements.recommended|safe }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mt-4">
+    <a class="btn btn-secondary" href="/steam-search">Cari Game Lain</a>
+    <a class="btn btn-secondary" href="/">Kembali ke Dashboard</a>
+</div>
+{% endblock %}

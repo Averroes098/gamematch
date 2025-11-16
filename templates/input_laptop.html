@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Cek Kecocokan Laptop</h2>
+
+{% if error %}
+<div class="alert alert-danger mt-3">{{ error }}</div>
+{% endif %}
+
+<form method="post" class="mt-4">
+    <h4>Pilih Laptop (Otomatis)</h4>
+    <select id="laptop_name_select" name="laptop_name" class="form-select mb-3"
+        aria-label="Pilih Laptop dari database lokal" title="Pilih Laptop">
+        <option value="">-- Pilih dari database lokal --</option>
+        {% for laptop in laptops %}
+        <option value="{{ laptop.name }}">{{ laptop.name }} ({{ laptop.ram }}GB RAM)</option>
+        {% endfor %}
+    </select>
+
+    <h4>Atau Isi Manual</h4>
+    <input class="form-control mb-2" name="cpu" placeholder="CPU" value="">
+    <input class="form-control mb-2" name="gpu" placeholder="GPU" value="">
+    <input type="number" class="form-control mb-3" name="ram" placeholder="RAM (GB)" value="">
+
+    <button type="submit" class="btn btn-success">Cek Sekarang</button>
+</form>
+
+<a class="btn btn-secondary mt-4" href="/">Kembali ke Dashboard</a>
+{% endblock %}

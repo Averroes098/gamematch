@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>🔍 Cari Game di Steam</h2>
+
+{% if current_laptop %}
+<div class="alert alert-info mt-3">
+  <strong>📱 Laptop Terpilih:</strong> {{ current_laptop.name }} ({{ current_laptop.ram }}GB RAM)
+  {% if difficulty %}
+  <br><strong>📊 Category:</strong> {{ difficulty[0] }} - {{ difficulty[1] }}
+  {% endif %}
+</div>
+{% endif %}
+
+<form method="POST" class="mt-4">
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" name="query"
+      placeholder="Masukkan nama game (contoh: GTA, Minecraft, Fortnite)..." required>
+    <button class="btn btn-primary" type="submit">🎮 Cari</button>
+  </div>
+</form>
+
+{% if recommendations %}
+<div class="mt-5">
+  <h4>💡 Game yang Direkomendasikan untuk Laptop Anda</h4>
+  <div class="row">
+    {% for game in recommendations %}
+    <div class="col-md-4 mb-3">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">{{ game.name }}</h5>
+          <p class="card-text">
+            <small class="text-muted">{{ game.description }}</small>
+          </p>
+          <p class="card-text">
+            <span class="badge bg-secondary">{{ game.category }}</span>
+            <span class="badge bg-info">{{ game.ram }}GB RAM</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+
+<div class="alert alert-light mt-4">
+  <p><small>💡 Tip: Cari game favorit Anda di Steam. Setelah mendapatkan hasil, klik tombol
+      <strong>"Bandingkan"</strong> untuk melihat perbandingan spesifikasi antara laptop Anda dengan requirement
+      game.</small></p>
+</div>
+
+<a class="btn btn-secondary mt-4" href="/">Kembali ke Dashboard</a>
+{% endblock %}
