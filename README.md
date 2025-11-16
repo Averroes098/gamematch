@@ -155,7 +155,7 @@ Buka di browser:
 ## 🤝 Kontribusi
 
 Pull Request selalu diterima jika saya lagi gabut aja.
-
+![Handshake GIF](https://github.com/user-attachments/assets/eb63af8f-7207-404d-85fa-3ed471ff9e1b)
 
 ---
 
