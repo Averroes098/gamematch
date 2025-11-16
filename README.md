@@ -108,11 +108,10 @@ Unduh semua file kode dari GitHub ke komputer Anda.
 git clone [https://github.com/Averroes098/gamematch.git](https://github.com/Averroes098/gamematch.git)
 
 
-b. Masuk ke Folder Proyek Pindah ke direktori (folder) yang baru saja Anda unduh.
+**b. Masuk ke Folder Proyek Pindah ke direktori (folder) yang baru saja Anda unduh.**
 
-Bash
-
-cd gamematch
+'''Bash
+**cd gamematch**
 c. Buat Virtual Environment Ini adalah praktik terbaik untuk mengisolasi dependensi proyek.
 
 Bash
@@ -141,10 +140,12 @@ f. Jalankan Aplikasi
 
 Bash
 
+
 python app.py
 
 
 ### 3. Buka di Browser
+
 Buka browser Anda (seperti Chrome) dan pergi ke alamat yang muncul di terminal. Biasanya alamatnya adalah:
 
 👉 https://www.google.com/search?q=http://127.0.0.1:8080 (atau http://127.0.0.1:5000)
@@ -166,6 +167,7 @@ git clone [https://github.com/Averroes098/gamematch.git](https://github.com/Aver
 ## 🤝 Kontribusi
 
 Pull Request selalu diterima jika saya lagi gabut aja.
+
 
 ![Handshake GIF](https://github.com/user-attachments/assets/eb63af8f-7207-404d-85fa-3ed471ff9e1b)
 
