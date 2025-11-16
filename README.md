@@ -148,14 +148,14 @@ Buka di browser:
 
 ## 📸 Preview Tampilan (Opsional)
 
-*(Tambahkan screenshot aplikasi jika ada)*
+<img width="1094" height="850" alt="Screenshot 2025-11-16 174148" src="https://github.com/user-attachments/assets/e41bd61f-8054-4bf6-bef7-3bf20bcaed03" />
 
 ---
 
 ## 🤝 Kontribusi
 
-Pull Request selalu diterima!
-Buat issue jika menemukan bug atau ingin request fitur baru.
+Pull Request selalu diterima jika saya lagi gabut aja.
+
 
 ---
 
