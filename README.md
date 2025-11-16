@@ -88,63 +88,48 @@ Pengguna cukup **memilih game**, lalu sistem akan menampilkan **daftar laptop ya
 
 ---
 
-## 🚀 Cara Install & Menjalankan
+## 🚀 Cara Install & Menjalankan (Lokal)
 
-1. **Clone repository**
+Berikut adalah panduan langkah demi langkah untuk menjalankan proyek ini di komputer Anda.
 
-```bash
-git clone https://github.com/username/gamematch.git
-```
+### 1. Prasyarat
 
-2. **Masuk folder proyek**
+Pastikan Anda sudah menginstal **Python** di komputer Anda. Anda bisa mengunduhnya dari [python.org](https://www.python.org/downloads/).
 
-```bash
+### 2. Langkah-langkah Instalasi
+
+Buka **Terminal** (atau Command Prompt di Windows) dan ikuti perintah ini satu per satu.
+
+**a. Clone Repository**
+Unduh semua file kode dari GitHub ke komputer Anda.
+
+Masuk ke Folder Proyek Pindah ke direktori (folder) yang baru saja Anda unduh.
 cd gamematch
-```
 
-3. **Install dependency**
+Buat Virtual Environment Ini adalah praktik terbaik untuk mengisolasi dependensi proyek.
+python -m venv venv
 
-```bash
-composer install
-npm install
-```
+Aktifkan Virtual Environment Anda harus melakukan ini setiap kali ingin menjalankan proyek.
+Di Windows (CMD):
+venv\Scripts\activate
 
-4. **Buat file environment**
+Di Mac/Linux:
+source venv/bin/activate
 
-```bash
-cp .env.example .env
-```
+Install Semua Dependensi Perintah ini akan membaca file requirements.txt dan menginstal semua library yang dibutuhkan (seperti Flask, Pandas, dll.).
+pip install -r requirements.txt
 
-5. **Generate key**
+Jalankan Aplikasi
+python app.py / flask run
 
-```bash
-php artisan key:generate
-```
+Buka browser Anda (seperti Chrome) dan pergi ke alamat yang muncul di terminal. Biasanya alamatnya adalah:
 
-6. **Konfigurasi database di `.env`**
+👉 https://www.google.com/search?q=http://127.0.0.1:8080 (atau http://127.0.0.1:5000)
 
-```
-DB_DATABASE=gamematch
-DB_USERNAME=root
-DB_PASSWORD=
-```
-
-7. **Migrasi database**
 
 ```bash
-php artisan migrate
-```
+git clone [https://github.com/Averroes098/gamematch.git](https://github.com/Averroes098/gamematch.git)
 
-8. **Jalankan server**
-
-```bash
-php artisan serve
-```
-
-Buka di browser:
-👉 `http://127.0.0.1:8000`
-
----
 
 ## 📸 Preview Tampilan (Opsional)
 
