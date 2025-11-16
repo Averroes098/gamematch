@@ -1,72 +1,165 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>📊 Analisis Kompatibilitas</h2>
+
+<div class="text-center mb-4">
+    <h2 class="display-6"><i class="bi bi-bar-chart-line"></i> Analisis Kompatibilitas</h2>
+    <p class="lead text-muted">Perbandingan spesifikasi laptop Anda dengan game.</p>
+</div>
 
 {% if compatibility %}
-<div class="row mt-4 mb-4">
+<div class="row mb-4">
     <div class="col-md-12">
         {% if compatibility.overall == "excellent" %}
-        <div class="alert alert-success" role="alert">
-            <h4 class="alert-heading">✅ LANCAR - OPTIMAL!</h4>
-            <p>{{ compatibility.message }}</p>
+        <div class="alert alert-success d-flex align-items-center shadow-sm" role="alert">
+            <i class="bi bi-check-circle-fill h2 me-3"></i>
+            <div>
+                <h4 class="alert-heading">✅ LANCAR - OPTIMAL!</h4>
+                <p class="mb-0">{{ compatibility.message }}</p>
+            </div>
         </div>
         {% elif compatibility.overall == "playable" %}
-        <div class="alert alert-info" role="alert">
-            <h4 class="alert-heading">⚠️ BISA DIMAINKAN</h4>
-            <p>{{ compatibility.message }}</p>
+        <div class="alert alert-info d-flex align-items-center shadow-sm" role="alert">
+            <i class="bi bi-info-circle-fill h2 me-3"></i>
+            <div>
+                <h4 class="alert-heading">⚠️ BISA DIMAINKAN</h4>
+                <p class="mb-0">{{ compatibility.message }}</p>
+            </div>
         </div>
         {% else %}
-        <div class="alert alert-danger" role="alert">
-            <h4 class="alert-heading">❌ TIDAK LANCAR</h4>
-            <p>{{ compatibility.message }}</p>
+        <div class="alert alert-danger d-flex align-items-center shadow-sm" role="alert">
+            <i class="bi bi-exclamation-triangle-fill h2 me-3"></i>
+            <div>
+                <h4 class="alert-heading">❌ TIDAK LANCAR</h4>
+                <p class="mb-0">{{ compatibility.message }}</p>
+            </div>
         </div>
         {% endif %}
     </div>
 </div>
 {% endif %}
 
-<div class="row mt-4">
-    <div class="col-md-6">
-        <h4>💻 Spesifikasi Laptop Anda</h4>
-        <div class="card">
-            <div class="card-body">
-                <p><strong>Nama:</strong> {{ laptop.name }}</p>
-                <p><strong>CPU:</strong> {{ laptop.cpu }}</p>
-                <p><strong>GPU:</strong> {{ laptop.gpu }}</p>
-                <p><strong>RAM:</strong> {{ laptop.ram }} GB</p>
-                {% if laptop.storage %}<p><strong>Storage:</strong> {{ laptop.storage }} GB</p>{% endif %}
+<div class="row g-4">
+
+    <div class="col-lg-6">
+        <h4 class="mb-3"><i class="bi bi-laptop"></i> Spesifikasi Laptop Anda</h4>
+        <div class="card border-0">
+            <div class="card-body p-0">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <strong>Nama:</strong>
+                        <span class="text-end">{{ laptop.name }}</span>
+                    </li>
+                    {% if laptop.get('brand') and laptop.get('brand') != 'N/A' %}
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <strong>Brand:</strong>
+                        <span class="text-end">{{ laptop.brand }}</span>
+                    </li>
+                    {% endif %}
+                    {% if laptop.get('os') and laptop.get('os') != 'N/A' %}
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <strong>OS:</strong>
+                        <span class="text-end">{{ laptop.os }}</span>
+                    </li>
+                    {% endif %}
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <strong>CPU:</strong>
+                        <span class="text-end">{{ laptop.cpu }}</span>
+                    </li>
+                    {% if laptop.get('cores', 0) > 0 %}
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <strong>Cores/Threads:</strong>
+                        <span class="text-end">{{ laptop.cores }}C / {{ laptop.threads }}T</span>
+                    </li>
+                    {% endif %}
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <strong>GPU:</strong>
+                        <span class="text-end">{{ laptop.gpu }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <strong>RAM:</strong>
+                        <span class="badge bg-primary rounded-pill fs-6">{{ laptop.ram }} GB</span>
+                    </li>
+                    {% if laptop.get('storage') %}
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <strong>Storage:</strong>
+                        <span class_end=>{{ laptop.storage }} GB</span>
+                    </li>
+                    {% endif %}
+                    {% if laptop.get('screen_size', 0) > 0 %}
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <strong>Layar:</strong>
+                        <span class="text-end">{{ laptop.screen_size }} inches</span>
+                    </li>
+                    {% endif %}
+                    {% if laptop.get('resolution') and laptop.get('resolution') != 'N/A' %}
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <strong>Resolusi:</strong>
+                        <span class="text-end">{{ laptop.resolution }}</span>
+                    </li>
+                    {% endif %}
+                </ul>
             </div>
         </div>
     </div>
 
-    <div class="col-md-6">
-        <h4>🎮 Persyaratan Game: {{ game.name }}</h4>
-        <div class="card">
-            <div class="card-body">
-                {% if game.short_description %}<p><small><strong>Deskripsi:</strong> {{ game.short_description
-                        }}</small></p>{% endif %}
+    <div class="col-lg-6">
+        <h4 class="mb-3"><i class="bi bi-joystick"></i> Persyaratan Game: {{ game.name }}</h4>
 
-                <h6 class="mt-3">Minimum Requirements:</h6>
+        {% if game.header_image %}
+        <img src="{{ game.header_image }}" class="img-fluid rounded shadow-sm mb-3" alt="{{ game.name }} header image">
+        {% endif %}
+        {% if game.short_description %}<p class="text-muted mb-3"><small>{{ game.short_description }}</small></p>{%
+        endif %}
+
+        <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="minimum-tab" data-bs-toggle="tab" data-bs-target="#minimum-tab-pane"
+                    type="button" role="tab" aria-controls="minimum-tab-pane" aria-selected="true">
+                    Minimum
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="recommended-tab" data-bs-toggle="tab"
+                    data-bs-target="#recommended-tab-pane" type="button" role="tab" aria-controls="recommended-tab-pane"
+                    aria-selected="false">
+                    Recommended
+                </button>
+            </li>
+        </ul>
+        <div class="tab-content border border-top-0 p-3 bg-light rounded-bottom" id="myTabContent">
+            <div class="tab-pane fade show active" id="minimum-tab-pane" role="tabpanel" aria-labelledby="minimum-tab"
+                tabindex="0">
                 {% if compatibility.minimum %}
-                <div class="alert alert-light p-2 mb-2">
+                <div class="alert alert-secondary p-2 mb-2">
                     <strong>Status:</strong> {{ compatibility.minimum }}
                 </div>
                 {% endif %}
-                {% if game.pc_requirements %}
-                <div class="bg-light p-2 mb-3 border-start border-2">
+
+                {% if game.pc_requirements and game.pc_requirements.minimum %}
+                <div class="bg-white p-2 rounded border-start border-4">
                     {{ game.pc_requirements.minimum|safe }}
                 </div>
+                {% else %}
+                <div class="p-2">
+                    <em class="text-muted">Spesifikasi minimum tidak tersedia.</em>
+                </div>
                 {% endif %}
-
-                <h6>Recommended Requirements:</h6>
+            </div>
+            <div class="tab-pane fade" id="recommended-tab-pane" role="tabpanel" aria-labelledby="recommended-tab"
+                tabindex="0">
                 {% if compatibility.recommended %}
-                <div class="alert alert-light p-2 mb-2">
+                <div class="alert alert-secondary p-2 mb-2">
                     <strong>Status:</strong> {{ compatibility.recommended }}
                 </div>
                 {% endif %}
-                {% if game.pc_requirements %}
-                <div class="bg-light p-2 border-start border-2">
+
+                {% if game.pc_requirements and game.pc_requirements.recommended %}
+                <div class="bg-white p-2 rounded border-start border-4">
                     {{ game.pc_requirements.recommended|safe }}
+                </div>
+                {% else %}
+                <div class="p-2">
+                    <em class="text-muted">Spesifikasi rekomendasi tidak tersedia.</em>
                 </div>
                 {% endif %}
             </div>
@@ -74,8 +167,9 @@
     </div>
 </div>
 
-<div class="mt-4">
-    <a class="btn btn-secondary" href="/steam-search">Cari Game Lain</a>
-    <a class="btn btn-secondary" href="/">Kembali ke Dashboard</a>
+<hr class="mt-5">
+<div class="mt-4 text-center">
+    <a class="btn btn-secondary" href="/steam-search"><i class="bi bi-search"></i> Cari Game Lain</a>
+    <a class="btn btn-outline-dark" href="/"><i class="bi bi-house"></i> Kembali ke Dashboard</a>
 </div>
 {% endblock %}

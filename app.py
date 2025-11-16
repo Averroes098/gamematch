@@ -78,7 +78,6 @@ def compare_laptop_game(appid):
             return render_template("error.html", message="Game tidak ditemukan"), 404
         
         # Analisis kompatibilitas
-        # Extract RAM requirements dari game requirements (jika ada)
         game_min_ram = None
         game_rec_ram = None
         
@@ -87,16 +86,22 @@ def compare_laptop_game(appid):
                 min_text = game["pc_requirements"].get("minimum", "")
                 rec_text = game["pc_requirements"].get("recommended", "")
                 
-                # Cari angka RAM di teks (simple parsing)
+                # --- PERBAIKAN REGEX DI SINI ---
+                # Regex lama salah mengambil angka dari "64-bit" atau "RX 480".
+                # Regex baru ini secara spesifik mencari pola '8 GB RAM' atau '16 GB Memory'.
+                
                 if min_text:
-                    min_match = re.search(r'(\d+)\s*(?:GB)?.*?(?:RAM|Memory)', str(min_text), re.IGNORECASE)
+                    min_match = re.search(r'(\d+)\s*GB\s*(?:RAM|Memory)', str(min_text), re.IGNORECASE)
                     if min_match:
                         game_min_ram = int(min_match.group(1))
                 
                 if rec_text:
-                    rec_match = re.search(r'(\d+)\s*(?:GB)?.*?(?:RAM|Memory)', str(rec_text), re.IGNORECASE)
+                    rec_match = re.search(r'(\d+)\s*GB\s*(?:RAM|Memory)', str(rec_text), re.IGNORECASE)
                     if rec_match:
                         game_rec_ram = int(rec_match.group(1))
+                
+                # --- AKHIR PERBAIKAN ---
+
             except Exception as e:
                 print(f"Error parsing RAM requirements: {e}")
         
@@ -115,7 +120,7 @@ def compare_laptop_game(appid):
     except Exception as e:
         print(f"Error in compare_laptop_game: {e}")
         return render_template("error.html", message=f"Terjadi error: {str(e)}"), 500
-
+    
 
 @app.route("/steam-search", methods=["GET", "POST"])
 def steam_search():
