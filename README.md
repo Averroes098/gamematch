@@ -183,5 +183,4 @@ MIT License — bebas digunakan dan dikembangkan.
 
 ```
 
----
-```
+
