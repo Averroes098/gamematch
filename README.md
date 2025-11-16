@@ -9,81 +9,45 @@ Pengguna cukup **memilih game**, lalu sistem akan menampilkan **daftar laptop ya
 
 ## ✨ Fitur Utama
 
-### 🔍 1. Cari Game
-
-Pengguna dapat mencari game berdasarkan nama. Sistem menyediakan informasi lengkap, seperti:
-
-* Minimum Specs
-* Recommended Specs
-* CPU & GPU Requirements
-* RAM & Storage Needed
-
-### 💻 2. Input Laptop – *Dua Opsi*
-
-#### 🧩 a. **Input Otomatis via API**
-
-Pengguna cukup memasukkan *nama laptop*.
-Sistem akan memanggil API dan mengisi spesifikasi laptop secara otomatis (CPU, GPU, RAM, Storage).
-
-#### 🧩 b. **Input Manual**
-
-Pengguna dapat mengisi spesifikasi laptop sendiri terutama jika:
-
-* Laptop tidak tersedia di API
-* Laptop custom / modifikasi
-* Ingin memasukkan laptop lama
-
-### ⚙️ 3. Mesin Rekomendasi
-
-GameMatch membandingkan spesifikasi laptop dengan persyaratan game, lalu memberikan hasil:
-
-* ✔️ **Cocok (Recommended)**
-* ⚠️ **Bisa Jalan, tapi di Setting Rendah**
-* ❌ **Tidak Memenuhi Minimum Spec**
-
-### 📊 4. Simpan Database Laptop & Game
-
-Semua data disimpan dalam database sehingga:
-
-* Pengguna dapat melihat laptop sebelumnya
-* Admin bisa menambah, mengedit, dan menghapus data
+* **Database Laptop:** Memuat spesifikasi laptop dari file `laptop.csv` menggunakan Pandas.
+* **Input Manual:** Pengguna dapat memasukkan spesifikasi CPU, GPU, RAM, dan Storage secara manual.
+* **Integrasi Steam API:** Mencari game berdasarkan nama dan mengambil detail persyaratan (Minimum & Recommended).
+* **Mesin Analisis:** Menganalisis kompatibilitas (saat ini berdasarkan RAM) dan memberikan status hasil.
 
 ---
 
 ## 🏗️ Tech Stack
 
-GameMatch dibangun dengan teknologi modern:
-
-| Komponen | Teknologi                            |
-| -------- | ------------------------------------ |
-| Backend  | Laravel 10                           |
-| Frontend | Blade / Bootstrap / AdminLTE         |
-| Database | MySQL                                |
-| API      | GameSpec API /                       |
+| Komponen   | Teknologi                         |
+| ---        | ---                               |
+| Backend    | **Python (Flask)**                |
+| Frontend   | HTML, Jinja2, **Bootstrap 5**     |
+| Data       | **Pandas** (untuk membaca `.csv`) |
+| API Client | **Requests** (untuk Steam API)    |
+| Server     | **Gunicorn** (untuk deployment)   |
 
 ---
 
 ## 📂 Struktur Proyek (Simplified)
 
 ```
-├── app/
-│   ├── Http/
-│   │   ├── Controllers/
-│   │   │   └── GameController.php
-│   │   │   └── LaptopController.php
-│   ├── Models/
-│       └── Game.php
-│       └── Laptop.php
-│
-├── resources/
-│   ├── views/
-│       └── game/
-│       └── laptop/
-│
-├── routes/
-│   └── web.php
-│
-└── README.md
+├── app.py                  # Aplikasi utama Flask
+├── data/
+│   └── laptop.csv          # Database spesifikasi laptop
+├── modules/
+│   ├── compatibility.py    # Logika analisis kompatibilitas
+│   ├── laptop_reader.py    # Pembaca file CSV laptop
+│   ├── recommendations.py  # Logika rekomendasi game
+│   └── steam_api.py        # Modul untuk interaksi Steam API
+├── templates/
+│   ├── base.html           # Template dasar (navbar, footer)
+│   ├── compare.html        # Halaman hasil perbandingan
+│   ├── dashboard.html      # Halaman utama
+│   ├── input_laptop.html   # Form input spesifikasi laptop
+│   └── steam_search.html   # Halaman pencarian game
+├── Procfile                # Konfigurasi deploy (Gunicorn)
+├── requirements.txt        # Daftar dependensi Python
+└── README.md               # File yang sedang Anda baca
 ```
 
 ## 🔄 GameMatch System Workflow
