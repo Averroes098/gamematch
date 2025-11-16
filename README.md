@@ -1,9 +1,5 @@
 # 🎮 GameMatch
 
-**Link Website**
-https://gamematch.up.railway.app/
-
-
 **Temukan Laptop yang Cocok untuk Game Favoritmu**
 
 GameMatch adalah aplikasi rekomendasi laptop berbasis web yang membantu pengguna mencari laptop terbaik sesuai kebutuhan gaming mereka.
@@ -200,6 +196,10 @@ Pull Request selalu diterima jika saya lagi gabut aja.
 
 ---
 
-## 📄 License
+## Link Website
+https://gamematch.up.railway.app/
 
+---
+
+## 📄 License
 MIT License – Bebas digunakan dan dikembangkan.
