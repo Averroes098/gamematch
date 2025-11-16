@@ -18,17 +18,17 @@ Pengguna cukup **memilih game**, lalu sistem akan menampilkan **daftar laptop ya
 
 ## 🏗️ Tech Stack
 
-| Komponen   | Teknologi                         |
-| ---        | ---                               |
-| Backend    | **Python (Flask)**                |
-| Frontend   | HTML, Jinja2, **Bootstrap 5**     |
-| Data       | **Pandas** (untuk membaca `.csv`) |
-| API Client | **Requests** (untuk Steam API)    |
-| Server     | **Gunicorn** (untuk deployment)   |
+| Komponen | Teknologi |
+| --- | --- |
+| Backend | **Python (Flask)** |
+| Frontend | HTML, Jinja2, **Bootstrap 5** |
+| Data | **Pandas** (untuk membaca `.csv`) |
+| API Client | **Requests** (untuk Steam API) |
+| Server | **Gunicorn** (untuk deployment) |
 
 ---
 
-## 📂 Struktur Proyek (Simplified)
+## 📂 Struktur Proyek
 
 ```
 ├── app.py                  # Aplikasi utama Flask
@@ -51,6 +51,7 @@ Pengguna cukup **memilih game**, lalu sistem akan menampilkan **daftar laptop ya
 ```
 
 ## 🔄 GameMatch System Workflow
+
 ```
 ┌────────────────────┐
 │     User / Client  │
@@ -86,6 +87,7 @@ Pengguna cukup **memilih game**, lalu sistem akan menampilkan **daftar laptop ya
 └────────────────────┘
 ```
 
+
 ---
 
 ## 🚀 Cara Install & Menjalankan (Lokal)
@@ -102,34 +104,53 @@ Buka **Terminal** (atau Command Prompt di Windows) dan ikuti perintah ini satu p
 
 **a. Clone Repository**
 Unduh semua file kode dari GitHub ke komputer Anda.
+```bash
+git clone [https://github.com/Averroes098/gamematch.git](https://github.com/Averroes098/gamematch.git)
 
-Masuk ke Folder Proyek Pindah ke direktori (folder) yang baru saja Anda unduh.
+
+b. Masuk ke Folder Proyek Pindah ke direktori (folder) yang baru saja Anda unduh.
+
+Bash
+
 cd gamematch
+c. Buat Virtual Environment Ini adalah praktik terbaik untuk mengisolasi dependensi proyek.
 
-Buat Virtual Environment Ini adalah praktik terbaik untuk mengisolasi dependensi proyek.
+Bash
+
 python -m venv venv
+d. Aktifkan Virtual Environment Anda harus melakukan ini setiap kali ingin menjalankan proyek.
 
-Aktifkan Virtual Environment Anda harus melakukan ini setiap kali ingin menjalankan proyek.
 Di Windows (CMD):
+
+Bash
+
 venv\Scripts\activate
-
 Di Mac/Linux:
+
+Bash
+
 source venv/bin/activate
+(Anda akan melihat (venv) di awal baris terminal Anda jika berhasil).
 
-Install Semua Dependensi Perintah ini akan membaca file requirements.txt dan menginstal semua library yang dibutuhkan (seperti Flask, Pandas, dll.).
+e. Install Semua Dependensi Perintah ini akan membaca file requirements.txt dan menginstal semua library yang dibutuhkan.
+
+Bash
+
 pip install -r requirements.txt
+f. Jalankan Aplikasi
 
-Jalankan Aplikasi
-python app.py / flask run
+Bash
 
+python app.py
+
+
+### 3. Buka di Browser
 Buka browser Anda (seperti Chrome) dan pergi ke alamat yang muncul di terminal. Biasanya alamatnya adalah:
 
 👉 https://www.google.com/search?q=http://127.0.0.1:8080 (atau http://127.0.0.1:5000)
 
 
-
 ---
-
 
 
 ```bash
