@@ -127,6 +127,11 @@ Buka browser Anda (seperti Chrome) dan pergi ke alamat yang muncul di terminal. 
 👉 https://www.google.com/search?q=http://127.0.0.1:8080 (atau http://127.0.0.1:5000)
 
 
+
+---
+
+
+
 ```bash
 git clone [https://github.com/Averroes098/gamematch.git](https://github.com/Averroes098/gamematch.git)
 
